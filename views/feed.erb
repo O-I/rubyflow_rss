@@ -1,0 +1,9 @@
+<h1>Ruby Flow RSS</h1>
+
+<div class="rss-items">
+  <% @feed.items.each do |item| %>
+    <h3><%= item.title %></h3>
+    <p><%= item.description %></p>
+    <aside><%= item.pubDate.strftime('%A %B %-m, %Y %T') %></aside>
+  <% end %>
+</div>
