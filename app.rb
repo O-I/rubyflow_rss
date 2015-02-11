@@ -1,7 +1,7 @@
 require 'rss'
 require 'open-uri'
 require 'sinatra/base'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if ENV['RACK_ENV'] == 'development'
 
 class RubyFlowRSSFeed < Sinatra::Base
   configure :development do
