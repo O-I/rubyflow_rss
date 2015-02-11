@@ -33,6 +33,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack-test
   sinatra
   sinatra-reloader
   thin
