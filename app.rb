@@ -1,5 +1,5 @@
 require 'rss'
-require 'open-uri'
+require 'net/http'
 require 'sinatra/base'
 require 'sinatra/reloader' if ENV['RACK_ENV'] == 'development'
 
@@ -16,6 +16,6 @@ class RubyFlowRSSFeed < Sinatra::Base
   private
 
   def fetch_rss_feed
-    open('http://www.rubyflow.com/rss') { |rss| RSS::Parser.parse(rss) }
+    RSS::Parser.parse(Net::HTTP.get(URI('http://www.rubyflow.com/rss')))
   end
 end
