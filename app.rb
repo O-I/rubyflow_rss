@@ -16,6 +16,11 @@ class RubyFlowRSSFeed < Sinatra::Base
   private
 
   def fetch_rss_feed
-    RSS::Parser.parse(Net::HTTP.get(URI('http://www.rubyflow.com/rss')))
+    uri = URI('http://www.rubyflow.com/rss')
+    req = Net::HTTP::Get.new(uri)
+
+    res = Net::HTTP.start(uri.hostname, uri.port) { |http| http.request(req) }
+
+    RSS::Parser.parse(res.body)
   end
 end
